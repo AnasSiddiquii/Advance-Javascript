@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1> <center> Advance2 JS </center> </h1>
+
+    <script>
+        
+        // arrow function
+        console.log("")
+
+
+        // sum
+
+        function sum(a,b){
+            return a+b
+        }
+        console.log(sum(3,2))
+        
+            // same //
+        
+        // let sumA = (a,b) => {return a+b}
+        let sumA = (a,b) => a+b            // only for one line
+        console.log(sumA(2,3))
+        
+
+        // double
+
+        function double(a){
+            return a*2
+        }
+        console.log(double(5))
+        
+            // same //
+        
+        let doubleA = a => a*2            // only for one line
+        console.log(doubleA(5))
+        
+
+        // random
+
+        function random(){
+            return Math.random()
+        }
+        console.log(random())
+
+            // same //
+        
+        let randomA = () => Math.random()
+        console.log(randomA())
+
+
+        // event listener
+
+        document.addEventListener('click',function(){
+            console.log("clicked")
+        })
+
+            // same //
+        
+        document.addEventListener('click', () => console.log("clicked"))
+
+
+        
+        // callback function
+        console.log("")
+        
+        function sayHello(){
+            console.log("hello")
+        }
+        
+        function sayHi(){
+            console.log("hi")
+        }
+
+        function add(n1,n2,callback){
+            // sayHello()
+            // sayHi()
+            console.log(n1+n2)
+            callback()
+        }
+        let a = 10
+        let b = 20
+        
+        add(a,b,sayHello)
+        add(30,5,sayHi)
+        add(20,20,function(){console.log("bye")})
+        add(15,30,()=>console.log("bye bye"))
+        
+
+
+        // map function   // to iterate array
+        console.log("")
+
+        let array = [2,3,4,5,6]
+        let arr = []                              // to store the output
+        for(let i = 0; i<array.length; i++){
+            arr[i]=array[i]*2
+        }
+        console.log(arr) // output = [4,6,8,10,12]
+        
+        let array1 = [2,3,4,5,6]
+        let arr1 = array1.map(function(val){return val*3})
+        console.log(arr1)
+        
+        let array2 = [2,3,4,5,6]
+        let arr2 = array2.map(val => val * 4)     // to store the output
+        console.log(arr2)
+        
+                    // almost same
+
+        // filter function   // to sort array
+        console.log("")
+        
+        let array3 = [2,22,13,5,6,61,23,7]
+        let arr3 = array3.filter(val => val > 10) // to store the output
+        console.log(arr3)
+        
+        let team = [        // array of objects
+            {name:"anas",  position:"developer"},
+            {name:"ashish",position:"developer"},
+            {name:"amaan", position:"manager"},
+            {name:"iqra",  position:"teacher"}
+        ]
+        let developer =team.filter(val=>val.position=="developer")
+        console.log(developer)
+
+
+
+        // prototype
+        console.log("")
+
+        let person1 = {}
+        console.log(person1)
+        
+        let person2 = {name:"anas"}
+        console.log(person2)
+        
+        console.log(person2.hasOwnProperty("name"))
+        console.log(person2.hasOwnProperty("age"))
+        
+        // ^ difference in prototype singlelevel inheritance
+
+        // V difference in prototype multilevel inheritance
+
+        function Student(n){
+            this.name=n
+        }
+        let person3 = new Student ("amaan")
+        console.log(person3)
+        
+
+        function Creature(ls) {
+            this.lifespan=ls
+        }
+        
+        let creature1 = new Creature (100)
+        console.log(creature1)
+        
+        Creature.prototype.breath = function(){
+            console.log("breathing")
+        }
+        
+
+        function Person(first,last,age){
+            this.firstName=first
+            this.lastName=last
+            this.age=age
+        }
+
+        Person.prototype=Creature.prototype   // inherit creature0[]
+
+        Person.prototype.nationality = "indian"       
+
+        Person.prototype.fullName = function(){
+                console.log(this.firstName+" "+this.lastName)
+            }
+
+        let person4 = new Person("anas","siddiqui",23)
+        let person5 = new Person("amaan","siddiqui",20 )
+
+        console.log(person4)
+        console.log(person5)
+        
+        person4.fullName()
+        person5.fullName()
+        
+        console.log(person4.nationality)
+        console.log(person5.nationality)
+        
+        person4.breath()
+        person5.breath()
+       
+
+
+        // class,object
+        console.log("")
+        
+        class Human{}  //empty
+        let human1 = new Human()
+        console.log(human1)
+        
+        class People{      // no need to write "function"
+            
+        constructor(n,a){  // constructor as object of class "not" in "prototype"
+                this.name=n
+                this.age=a
+            }
+
+            bye="bye"      // propetry as object of class "not" in "prototype"
+            static hi="hi" // static propetry "not" in "object/class"
+
+            sayhi(){       // method(function) as object of class in "prototype"
+                console.log("sayhi")
+            }
+            
+            static sayhello(){ // static method is called my class name "People"
+                console.log("sayhello") // static method "not" in "object/class"
+            }
+        }
+
+        let people1 = new People("anas",23)
+        console.log(people1)
+        people1.sayhi()
+        People.sayhello()
+        console.log(People.hi)
+        console.log(people1.bye)
+
+
+
+        // inheritance
+        console.log("")
+
+        class emp{
+
+            constructor(n,a){
+                console.log ("emp")
+                this.name=n
+                this.age=a
+            }
+
+            msg(){             // goes to emp protocal
+                console.log("emp msg")
+            }
+
+        }
+        
+        class mng extends emp{  // extends is to inherit
+
+            constructor(n,a,d){
+                super(n,a)      // super is for including elements of parent
+                this.department=d
+            }
+
+            msg(){             // goes to emp protocal
+                console.log("mng msg")
+            }
+
+            info(){             // goes to mng protocal
+                super.msg()
+                this.msg()      // sometimes "this" can also work like "super"
+                console.log(this.name + " is manage of " + this.department)
+                                // name is defined in parent class 
+                                // department is defined in same class 
+            }
+
+        }
+
+        let mng1 = new mng("anas",23,"web-dev") // arguments
+        console.log(mng1)         // output of constructor of mng
+        mng1.info()               // calling function of same class
+        mng1.msg()                // calling function of parent class
+        
+        class admin extends mng{
+
+        }
+       
+        let admin1 = new admin("amaan",20,"android-dev")
+        console.log(admin1)
+
+        class empl{
+            #name=""            // # for private    
+            constructor(n){
+                this.#name=n
+            }
+            
+            #getn(){           // private method
+                console.log(this.#name) // # can only be called inside the class 
+            }
+
+            public(){          // private to public
+                this.#getn()   // # can only be called inside the class 
+            }
+
+        }
+        
+        let empl1 = new empl("iqra")
+        // empl1.getn()                     // ^ this just for output
+        empl1.public()                     // ^ this just for output
+
+
+        //mixin
+        console.log("")
+        
+        let obj1 = {                       // object 1
+            hello(){console.log("hello")},
+        }
+        
+        let obj2 = {                       // object 2
+            hi(){console.log("hi")}
+        }
+
+        class user{                       // class 1 > obj1 + obj2
+            constructor(){
+                this.name="ashish"
+            }
+        }
+
+        class boss extends user{           // class 2 > class 1 > obj1 + obj2
+
+        }
+        
+        Object.assign(user.prototype,obj1) //imp // inherit object in class
+        Object.assign(user.prototype,obj2) //imp // inherit object in class
+
+        obj1.hello()         // object
+        obj2.hi()
+        
+        let user1 = new user()
+        console.log(user1)
+        
+        user1.hello()       // inherited object 
+        user1.hi()
+        
+        let boss1 = new boss() 
+        console.log(boss1)
+        
+        boss1.hello()       // inherited class
+        boss1.hi()
+        
+
+
+        // cookies
+        console.log("")
+        
+        // name value pair
+        document.cookie="item=milk"
+        
+        // future expiry date for saving cookie
+        document.cookie="loc=india; expires=Fri, 12 Aug 2022 11:30:50 UTC"
+        
+        // past expiry date to delete cookie
+        document.cookie="loc=india; expires=Fri, 5 Aug 2022 11:30:50 UTC"
+        
+        // to charge the cookie
+        document.cookie="item=eggs,bread"
+        
+        let x = document.cookie
+        console.log(x)
+        
+
+        
+        // local storage
+        console.log("")
+        
+        // set
+        localStorage.setItem ("fname","anas")
+        localStorage.setItem ("lname","siddiqui")
+        
+        // delete
+        localStorage.removeItem ("fname")
+        
+        // get
+        console.log(localStorage.getItem ("fname"))
+        console.log(localStorage.getItem ("lname"))
+        
+        
+        
+        // session storage
+        console.log("")
+        
+        // set
+        sessionStorage.setItem ("fname","anas")
+        sessionStorage.setItem ("lname","siddiqui")
+        
+        // delete
+        sessionStorage.removeItem ("lname")
+        
+        // get
+        console.log(sessionStorage.getItem ("fname"))
+        console.log(sessionStorage.getItem ("lname"))
+
+
+
+        </script>
+
+</body>
+</html>

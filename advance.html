@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1> <center> Advance JS </center> </h1>
+    
+    <script>
+        
+        // let n const
+        console.log("")
+        
+        // Works
+        
+        var a=10
+        console.log(a)
+        var a=20
+        console.log(a)
+        var a=30
+        console.log(window.a)
+        
+        // Error
+        // let b=10
+        // console.log(b)
+        // let b=20
+        // console.log(b)
+        let b=30 //undifined
+        console.log(window.b)
+        
+        
+        
+        // default parameter
+        console.log("")
+        
+        function talk(msg="hello"){
+            console.log(msg)
+        }
+        
+        // talk("hello")
+        talk()
+        
+        
+        
+        // rest parameter
+        console.log("")
+        
+        function sum(a,b){
+            console.log(a+b)
+            return a+b
+        }
+            
+        sum(1,2)
+        
+        function summ(...abc){
+            console.log(abc)   // array
+            
+            let result = 0
+            for(let i=0; i<abc.length; i++){
+                result+=abc[i]
+            }
+            console.log(result)
+        }
+        
+        summ(1,2,3)
+        
+        
+        
+        // // spread operator
+        console.log("")
+        
+        array1=[1,2,3]
+        array2=[...array1,9,9,9]
+        array3=[9,...array1,9,9]
+        array4=[9,9,...array1,9]
+        array5=[9,9,9,...array1]
+        array6=[4,5,6]
+        array7=[...array1,...array6]
+        
+        console.log(array2)
+        console.log(array3)
+        console.log(array4)
+        console.log(array5)
+        console.log(array7)
+        console.log("")
+        
+        
+        
+        // for of
+        console.log("")
+        
+        let x=[1,2,3,4,5,6]
+        for(let i of x){
+            console.log(i)
+        }
+        
+        let y="hello"
+        for(let i of y){
+            console.log(i)
+        }
+                        
+
+
+        // tamplate literals 
+        console.log("")
+
+        // problem 1
+        let z="hello\nworld"
+        console.log(z)
+        
+        // solution 1
+        let m=`hi
+        world`
+        console.log(m)
+        
+        // problem 2
+        let n="Anas"
+        console.log("My name is " + n +".")
+        
+        // solution 2
+        let o="Amaan"
+        console.log(`My name is ${o}.`)
+        
+        let p = 10
+        console.log(`Sum is = ${p+8}.`)
+        console.log(`div is = ${2/8}.`)
+                
+        
+        
+        // array destructuring 
+        console.log("")
+        
+        // problem
+        let book1=["maths","10th",250]
+        
+        let name1=book1[0]
+        console.log(name1)
+        
+        let class1=book1[1]
+        console.log(class1)
+        
+        let price1=book1[2]
+        console.log(price1)
+        
+        // solution
+        let book2=["sst","12th",,300,,['anas','1998']]
+        let [name2,class2,xyz,price2,author="xyz",[name,year]]= book2
+        console.log(name2)
+        console.log(class2)
+        console.log(xyz)
+        console.log(price2)
+        console.log(author)
+        console.log(name)
+        console.log(year)
+        
+        // use
+        function book(){
+            return ["book","price"]
+        }
+
+        let [i,j] = book()
+        console.log(i)
+        console.log(j)
+        
+        
+        
+        // object destructuring 
+        console.log("")
+        
+        // problem
+        let obj1={
+            namee1:"Anas",
+            agee1:23,
+            classs1:"MCA"
+        }
+        console.log(obj1.namee1)
+        console.log(obj1.agee1)
+        console.log(obj1.classs1)
+        
+        // solution
+        let obj2={
+            namee2:"Amaan",
+            agee2:20,
+            classs2:"BBA",
+            subobj:{
+                hr:12,
+                min:25,
+                sec:54,
+            }
+        }
+
+        let {namee2:title,agee2,classs2,marks,area="lko",subobj:{hr,min,sec}}=obj2
+        // console.log(namee2)
+        console.log(title)
+        console.log(agee2)
+        console.log(classs2)
+        console.log(marks)
+        console.log(area)
+        console.log(hr)
+        console.log(min)
+        console.log(sec)
+
+        </script> 
+
+</body>
+</html>

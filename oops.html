@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>
+        <center>OOPs</center>
+    </h1>
+
+    <script>
+
+        let person1 = {
+        
+            firstName:"Anas",
+            // 'last Name':"siddiqui",
+            lastName:"Siddiqui",
+            age:23,
+        
+            fullName:function(){
+                console.log(this.firstName+" "+this.lastName)
+        
+            }
+        }
+
+        // let person1 = {}              // empty object  
+        // let person1 = new Object()    // same as above
+        
+        person1.age = 30
+
+        console.log(person1.firstName)
+        // console.log(person1["last Name"])
+        console.log(person1.lastName)
+        console.log(person1.age)
+        
+        person1.fullName()
+        
+        person1.class = "MCA"
+        console.log(person1.class)
+        
+        person1.sayhi = function(){
+            console.log("function")
+        }
+        person1.sayhi()
+
+
+
+        // constructor function = class
+        function Person(first,last,age){
+            
+            this.firstName=first
+            this.lastName=last
+            this.age=age
+            
+            this.saybye=function(){
+                console.log("bye")
+            }
+
+            this.changeAge=function(newAge){
+                this.age=newAge
+            }
+
+        }
+
+        
+        let personx = new Person("Amaan","Siddiqui",20)
+        let persony = new Person("Iqra","Siddiqui",18)
+        
+        personx.age=22
+            // same //
+        personx.changeAge(22)
+        
+        console.log(personx)
+        console.log(persony)
+
+
+</script>
+
+</body>
+</html>
